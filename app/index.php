@@ -27,14 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: login.php");
         exit();
     }
-
+    //if add game button is clicked
     if(isset($_POST['add-game'])) {
+        //fileupload
         if($gm->fileUpload($_FILES['image'])) {
             echo "File uploaded";
         } else {
             echo "File not uploaded";
         }
-        
+        //insert game into database
         $gm->insertGame($_POST, $_FILES['image']['name']);
     }
     
